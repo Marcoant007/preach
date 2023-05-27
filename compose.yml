@@ -1,0 +1,31 @@
+services:
+  preachdatabase:
+    image: postgres
+    container_name: database_preach
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=preach
+      - POSTGRES_PASSWORD=preach123
+      - POSTGRES_DB=preachdb
+    volumes:
+      - pgdata:/data/postgres
+    
+  # preachservice:
+  #   build: .
+  #   container_name: service_preach
+  #   restart: always
+  #   ports:
+  #     - 3333:3333
+  #     - 9229:9299
+  #   volumes:
+  #     - .:usr/app
+  #   links:
+  #     - preachdatabase
+  #   depends_on:
+  #     - preachdatabase
+
+volumes:
+  pgdata:
+    driver: local

@@ -5,10 +5,10 @@
   "author": "Marco Antonio Araujo Junior",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --inspect=0.0.0.0:9229 --transpile-only --ignore-watch node_modules --respawn src/service/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "dev": "ts-node-dev --inspect=0.0.0.0:9229 --transpile-only --ignore-watch node_modules --respawn src/service/server.ts"
   },
   "dependencies": {
+    "@prisma/client": "^4.14.1",
     "bcryptjs": "^2.4.3",
     "cross-env": "^7.0.3",
     "csv-parse": "^5.4.0",
@@ -22,12 +22,13 @@
     "swagger-ui-express": "^4.6.3",
     "ts-node-dev": "^2.0.0",
     "tsyringe": "^4.7.0",
-    "typeorm": "^0.3.16",
-    "typescript": "^5.0.4",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
-    "@types/node": "^20.2.5"
+    "@types/node": "^20.2.5",
+    "prisma": "^4.14.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   }
 }
