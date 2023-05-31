@@ -4,7 +4,7 @@ interface IUserDTO {
     username: string;
     password: string;
     name: string;
-    birthDate?: Date;
+    birthDate?: string;
     createAt: Date;
     updatedAt: Date;
 }
