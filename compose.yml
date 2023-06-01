@@ -1,5 +1,5 @@
 services:
-  preachdatabase:
+  preach-database:
     image: postgres
     container_name: database_preach
     restart: always
@@ -11,21 +11,23 @@ services:
       - POSTGRES_DB=preachdb
     volumes:
       - pgdata:/data/postgres
-    
-  # preachservice:
-  #   build: .
-  #   container_name: service_preach
-  #   restart: always
-  #   ports:
-  #     - 3333:3333
-  #     - 9229:9299
-  #   volumes:
-  #     - .:usr/app
-  #   links:
-  #     - preachdatabase
-  #   depends_on:
-  #     - preachdatabase
+
+  preach-service:
+    build: .
+    container_name: service_preach
+    hostname: preach-service
+    restart: always
+    env_file:
+      - .env.dev
+    ports:
+      - 3333:3333
+      - 9229:9299
+    volumes:
+      - ./src:/usr/app/src
+      - ./prisma:/usr/app/prisma
+    depends_on:
+      - preach-database
+    command: yarn dev
 
 volumes:
   pgdata:
-    driver: local
