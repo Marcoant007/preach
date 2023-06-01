@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { AppError } from "../../../shared/error/AppError";
-import { CreateUserUseCase } from "../usecases/create-user";
+import { CreateUserUseCase } from "../usecases/create-user-usecase";
 
 class CreateUserController {
     async handle(request: Request, response: Response): Promise<Response> {

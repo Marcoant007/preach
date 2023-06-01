@@ -11,15 +11,22 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
-  username String @unique
-  password String
-  name     String
-  birthDate String?
-  createAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  updatedAt    DateTime @default(now()) @map(name: "updated_at")
+  username     String
+  password     String
+  email        String   @unique
+  active       Boolean?
+  firstAccess  Boolean? @map(name: "first_acess")
+  cellPhone    String?  @map(name: "cellphone")
+  birthDate    String?  @map(name: "birth_date")
+  blocked      Boolean?
+  attempt      Int?
+  emailChecked Boolean? @map(name: "email_checked")
+  urlImg       String?  @map(name: "url_img")
+  code         String?
 
-  @@unique([id, email, username], map: "unique_id_email_username")
+  @@unique([id, email], map: "unique_id_email_username")
   @@index([id])
 }

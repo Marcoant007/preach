@@ -5,21 +5,6 @@ import { IUserDTO } from "../dto/user-dto";
 import { AppError } from "../../../shared/error/AppError";
 
 class UserRepository implements IUserRepository {
-
-    async findUserByUsername(username: string): Promise<User | null> {
-        try {
-            const user = await prismaClient.user.findUnique({
-                where: {
-                    username: username
-                }
-            });
-            return user;
-        } catch (error) {
-            console.log(error);
-            throw new AppError(`An error occurred while fetching user by username`, 500);
-        }
-    }
-
     async findUserByEmail(email: string): Promise<User | null> {
         try {
             const user = await prismaClient.user.findUnique({
@@ -37,10 +22,9 @@ class UserRepository implements IUserRepository {
         try {
             await prismaClient.user.create({
                 data: {
-                    name: userDTO.name,
+                    username: userDTO.username,
                     email: userDTO.email,
                     password: userDTO.password,
-                    username: userDTO.username,
                     birthDate: userDTO.birthDate,
                 }
             });

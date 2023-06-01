@@ -6,23 +6,18 @@ import { AppError } from "../../../shared/error/AppError";
 
 @injectable()
 class CreateUserUseCase {
-    constructor(
-        @inject("UserRepository")
-        private userRepository: IUserRepository
-    ) { }
+    constructor(@inject("UserRepository") private userRepository: IUserRepository) { }
 
     async execute(userData: IUserDTO): Promise<void> {
         const passwordHash = await hash(userData.password, 8);
 
         const userEmailAlreadyExists = await this.userRepository.findUserByEmail(userData.email);
-        const userUsernameAlreadyExists = await this.userRepository.findUserByUsername(userData.username);
 
-        if (userEmailAlreadyExists || userUsernameAlreadyExists) {
+        if (userEmailAlreadyExists) {
             throw new AppError("User Already Exists", 400);
         }
         
         userData.password = passwordHash;
-
         await this.userRepository.createUser(userData);
     }
 }

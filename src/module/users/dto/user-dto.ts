@@ -1,12 +1,17 @@
+import { StatusEnum } from "../enum/status-enum";
+
 interface IUserDTO {
-    id: number;
-    email: string;
     username: string;
+    email: string;
     password: string;
-    name: string;
+    status?: StatusEnum;
+    blocked?: boolean;
+    active?: boolean;
     birthDate?: string;
-    createAt: Date;
-    updatedAt: Date;
+    attempt?: number;
+    emailChecked?: boolean;
+    urlImg?: string;
+    code?: string;
 }
 
 export {IUserDTO}
