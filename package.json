@@ -5,7 +5,9 @@
   "author": "Marco Antonio Araujo Junior",
   "license": "MIT",
   "scripts": {
-    "dev": "npx ts-node-dev --inspect=0.0.0.0:9229 --transpile-only --ignore-watch node_modules --respawn src/service/server.ts"
+    "start": "node .",
+    "build": "tsc",
+    "dev": "ts-node-dev --inspect=0.0.0.0:9229 --transpile-only --ignore-watch node_modules --respawn src/server.ts"
   },
   "dependencies": {
     "@changesets/cli": "^2.26.1",

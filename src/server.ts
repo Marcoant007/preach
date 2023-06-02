@@ -1,9 +1,9 @@
 import "reflect-metadata";
 import express, { NextFunction, Request, Response } from 'express';
 import "express-async-errors"
-import { router } from './routes'
-import "../shared/container/index-cotainer"
-import { AppError } from "../shared/error/AppError";
+import "./shared/container/index-cotainer"
+import { AppError } from "./shared/error/AppError";
+import { router } from "./routes";
 
 const port = 3333;
 const server = express();
