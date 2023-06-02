@@ -2,7 +2,7 @@ import "reflect-metadata";
 import express, { NextFunction, Request, Response } from 'express';
 import "express-async-errors"
 import "./shared/container/index-cotainer"
-import { AppError } from "./shared/error/AppError";
+import { AppError } from "./shared/error/app-error";
 import { router } from "./routes";
 
 const port = 3333;
@@ -21,4 +21,4 @@ server.use((err: Error, request: Request, response:Response, next: NextFunction)
 
 server.listen(port, ()=> console.log(`Server is running ${port} 🚀 `));
 
-export {server};
+export default server;

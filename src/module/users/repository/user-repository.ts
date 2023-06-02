@@ -2,7 +2,8 @@ import { User } from "@prisma/client";
 import { IUserRepository } from "./interface/user-repository-interface";
 import { prismaClient } from "../../../shared/database/migrations/prisma-client";
 import { IUserDTO } from "../dto/user-dto";
-import { AppError } from "../../../shared/error/AppError";
+import { AppError } from "../../../shared/error/app-error";
+import { logger } from "../../../shared/pino/pino-logger";
 
 class UserRepository implements IUserRepository {
     async findUserByEmail(email: string): Promise<User | null> {
@@ -14,6 +15,7 @@ class UserRepository implements IUserRepository {
             });
             return user;
         } catch (error) {
+            logger.error(error)
             throw new AppError(`An error occurred while fetching user by email ${error}`, 500);
         }
     }
@@ -29,7 +31,7 @@ class UserRepository implements IUserRepository {
                 }
             });
         } catch (error) {
-            console.log(error)
+            logger.error(error)
             throw new AppError(`An error occurred while create user`, 500);
         }
     }
@@ -44,7 +46,7 @@ class UserRepository implements IUserRepository {
 
             return user;
         } catch (error) {
-            console.log(error)
+            logger.error(error)
             throw new AppError(`An error occurred while fetching user by id ${error}`, 500);
         }
     }
