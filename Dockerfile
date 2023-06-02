@@ -2,12 +2,10 @@ FROM node:18-alpine
 
 WORKDIR /usr/app
 
-COPY package.json ./
+COPY ./package.json ./
 
-RUN npm install
+RUN yarn install
 
 COPY . .
 
-EXPOSE 3333
-
-CMD [ "npm", "run", "dev" ]
+CMD [ "yarn", "dev" ]

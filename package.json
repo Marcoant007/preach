@@ -1,6 +1,6 @@
 {
   "name": "preach",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "server.ts",
   "author": "Marco Antonio Araujo Junior",
   "license": "MIT",
@@ -8,6 +8,7 @@
     "dev": "npx ts-node-dev --inspect=0.0.0.0:9229 --transpile-only --ignore-watch node_modules --respawn src/service/server.ts"
   },
   "dependencies": {
+    "@changesets/cli": "^2.26.1",
     "@prisma/client": "^4.14.1",
     "bcryptjs": "^2.4.3",
     "cross-env": "^7.0.3",
