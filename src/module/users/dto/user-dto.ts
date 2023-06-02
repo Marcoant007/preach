@@ -11,7 +11,6 @@ interface IUserDTO {
     attempt?: number;
     emailChecked?: boolean;
     urlImg?: string;
-    code?: string;
 }
 
 export {IUserDTO}
