@@ -29,9 +29,9 @@ class UserRepository implements IUserRepository {
         }
     }
 
-    async createUser(userDTO: UserDTO): Promise<void> {
+    async createUser(userDTO: UserDTO): Promise<User> {
         try {
-            await prismaClient.user.create({
+           return await prismaClient.user.create({
                 data: {
                     username: userDTO.username,
                     email: userDTO.email,

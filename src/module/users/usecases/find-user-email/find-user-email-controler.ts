@@ -2,14 +2,15 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { AppError } from "../../../../shared/error/app-error";
 import { logger } from "../../../../shared/pino/pino-logger";
-import { ListUsersUseCase } from "./list-users-usecase";
+import { FindUserByEmailUseCase } from "./find-user-email-usecase";
 
-class ListAllUsersController {
+class FindUserByEmailController {
     async handle(request:Request, response: Response): Promise<Response>{
         try {
-            const listUserUseCase = container.resolve(ListUsersUseCase);
-            const all = await listUserUseCase.execute();
-            return response.json(all);
+            const {email} = request.params;
+            const findUserByEmailUseCase = container.resolve(FindUserByEmailUseCase);
+            const userDTO = await findUserByEmailUseCase.execute(email);
+            return response.json(userDTO);
         } catch (error) {
             logger.error(error);
             throw new AppError("Ops.. Unable to list user", 500)
@@ -17,4 +18,4 @@ class ListAllUsersController {
     }
 }
 
-export { ListAllUsersController }
+export { FindUserByEmailController  }

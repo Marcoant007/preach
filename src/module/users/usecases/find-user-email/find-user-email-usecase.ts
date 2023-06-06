@@ -1,20 +1,21 @@
-import { User } from "@prisma/client";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/error/app-error";
 import { logger } from "../../../../shared/pino/pino-logger";
-import { IUserRepository } from "../../repository/interface/user-repository-interface";
 import { UserDTO } from "../../dto/user-dto";
+import { IUserRepository } from "../../repository/interface/user-repository-interface";
 
 @injectable()
-class ListUsersUseCase {
+class FindUserByEmailUseCase {
     constructor(
         @inject("UserRepository") private userRepository: IUserRepository) { }
 
-    async execute(): Promise<UserDTO[]> {
+    async execute(email: string): Promise<UserDTO> {
         try {
-            const users = await this.userRepository.listAllUsers();
-            const userDTO = users.map(user => UserDTO.fromUser(user));
-            return userDTO;
+            const user = await this.userRepository.findUserByEmail(email);
+            if(!user){
+                throw new AppError("User does not exists", 404)
+            }
+            return UserDTO.fromUser(user);
         } catch (error) {
             logger.error(error);
             throw new AppError("Ops.. Unable to register user", 500)
@@ -22,4 +23,4 @@ class ListUsersUseCase {
     }
 }
 
-export { ListUsersUseCase };
+export { FindUserByEmailUseCase };
