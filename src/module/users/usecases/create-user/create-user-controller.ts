@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { AppError } from "../../../shared/error/app-error";
-import { logger } from "../../../shared/pino/pino-logger";
-import { CreateUserUseCase } from "../usecases/create-user-usecase";
+import { AppError } from "../../../../shared/error/app-error";
+import { logger } from "../../../../shared/pino/pino-logger";
+import { CreateUserUseCase } from "./create-user-usecase";
 
 class CreateUserController {
     async handle(request: Request, response: Response): Promise<Response> {
