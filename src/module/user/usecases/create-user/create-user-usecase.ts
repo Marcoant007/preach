@@ -10,7 +10,6 @@ class CreateUserUseCase {
     constructor(@inject("UserRepository") private userRepository: IUserRepository) { }
 
     async execute(userData: UserDTO): Promise<UserDTO> {
-        try {
             const passwordHash = await hash(userData.password, 8);
             const userEmailAlreadyExists = await this.userRepository.findUserByEmail(userData.email);
             if (userEmailAlreadyExists) {
@@ -19,10 +18,7 @@ class CreateUserUseCase {
             userData.password = passwordHash;
             const user = await this.userRepository.createUser(userData);
             return UserDTO.fromUser(user);
-        } catch (error) {
-            logger.error(error);
-            throw new AppError("Ops.. Unable to register user", 500)
-        }
+        
     }
 }
 
