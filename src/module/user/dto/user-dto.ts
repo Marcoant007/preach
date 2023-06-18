@@ -12,6 +12,7 @@ interface IUserDTO {
     attempt?: number;
     emailChecked?: boolean;
     urlImg?: string;
+    cellPhone?: string;
   }
   
   class UserDTO implements IUserDTO {
@@ -25,7 +26,8 @@ interface IUserDTO {
       public birthDate?: string,
       public attempt?: number,
       public emailChecked?: boolean,
-      public urlImg?: string
+      public urlImg?: string,
+      public cellPhone?: string
     ) {}
   
     static fromUser(user: User): UserDTO {
@@ -38,7 +40,8 @@ interface IUserDTO {
         user.birthDate != null ? user.birthDate : "",
         user.attempt != null ? user.attempt : 0,
         user.emailChecked != null ?  user.emailChecked : false,
-        user.urlImg != null ? user.urlImg : ""
+        user.urlImg != null ? user.urlImg : "",
+        user.cellPhone != null ? user.cellPhone : "",
       );
     }
   }

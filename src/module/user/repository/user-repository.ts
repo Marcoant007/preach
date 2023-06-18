@@ -4,8 +4,35 @@ import { prismaClient } from "../../../shared/database/migrations/prisma-client"
 import { UserDTO } from "../dto/user-dto";
 import { AppError } from "../../../shared/error/app-error";
 import { logger } from "../../../shared/pino/pino-logger";
+import { LoginDTO } from "../dto/login-dto";
 
 class UserRepository implements IUserRepository {
+    async findUserByEmailOrLogin(userDTO: LoginDTO): Promise<User | null> {
+        const user = await prismaClient.user.findFirst({
+            where: {
+                OR: [
+                    { email: userDTO.email },
+                    { username: userDTO.username }
+                ],
+            },
+        })
+
+        return user ;
+    }
+
+    async updateUsers(userId: number, userDTO: UserDTO): Promise<User> {
+        const user = await prismaClient.user.update({
+            where: { id: userId },
+            data: {
+              username: userDTO.username,
+              email: userDTO.email,
+              password: userDTO.password,
+              cellPhone: userDTO.cellPhone,
+              birthDate: userDTO.birthDate,
+            },
+          });
+          return user;
+    }
     async listAllUsers(): Promise<User[]> {
         const users = await prismaClient.user.findMany();
         return users;
@@ -20,6 +47,7 @@ class UserRepository implements IUserRepository {
 
         return user;
     };
+    
 
     async createUser(userDTO: UserDTO): Promise<User> {
         return await prismaClient.user.create({
@@ -38,7 +66,6 @@ class UserRepository implements IUserRepository {
                 id: userId
             }
         });
-
         return user;
     };
 }

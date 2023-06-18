@@ -7,6 +7,7 @@ export interface IResponseAuth {
     user : {
         name: string;
         email: string;
+        id: number
     };
     
     token: string;

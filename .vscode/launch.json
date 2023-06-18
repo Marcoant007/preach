@@ -20,6 +20,7 @@
             "remoteRoot": "/usr/app",
             "port": 9229,
             "address": "localhost",
+            // "localRoot": "${workspaceFolder}/src/"
             "sourceMapPathOverrides": {
                 "/usr/app/*": "${workspaceFolder}/src/*"
             }

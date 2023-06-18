@@ -18,7 +18,7 @@ services:
     hostname: preach-service
     restart: always
     env_file:
-      - .env.dev
+      - .env
     ports:
       - 3333:3333
       - 9229:9229

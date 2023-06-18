@@ -22,6 +22,7 @@ model User {
   cellPhone    String?  @map(name: "cellphone")
   birthDate    String?  @map(name: "birth_date")
   blocked      Boolean?
+  isAdmin      Boolean?  @map(name: "is_admin")
   attempt      Int?
   emailChecked Boolean? @map(name: "email_checked")
   urlImg       String?  @map(name: "url_img")
