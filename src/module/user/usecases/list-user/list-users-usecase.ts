@@ -2,7 +2,7 @@ import { User } from "@prisma/client";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/error/app-error";
 import { logger } from "../../../../shared/pino/pino-logger";
-import { IUserRepository } from "../../repository/interface/user-repository-interface";
+import { IUserRepository } from "../../repository/user-repository-interface";
 import { UserDTO } from "../../dto/user-dto";
 
 @injectable()

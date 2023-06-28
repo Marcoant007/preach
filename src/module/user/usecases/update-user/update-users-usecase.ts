@@ -3,7 +3,7 @@ import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/error/app-error";
 import { UserDTO } from "../../dto/user-dto";
-import { IUserRepository } from "../../repository/interface/user-repository-interface";
+import { IUserRepository } from "../../repository/user-repository-interface";
 
 interface IRequest {
     userId: number;

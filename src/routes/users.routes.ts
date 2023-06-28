@@ -16,7 +16,7 @@ const authenticateUserController = new AuthenticateUserController()
 
 usersRoutes.post("/session", authenticateUserController.handle);
 usersRoutes.post("/", createUserController.handle);
-usersRoutes.get("/",ensureAuthenticated, ensureAdmin, listUserController.handle);
+usersRoutes.get("/", ensureAuthenticated, listUserController.handle);
 usersRoutes.put("/:id", ensureAuthenticated, updateUserController.handle);
 usersRoutes.get("/:email", ensureAuthenticated, findUserByEmailController.handle);
 

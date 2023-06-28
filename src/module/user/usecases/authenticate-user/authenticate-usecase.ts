@@ -4,7 +4,7 @@ import crypto from "crypto";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/error/app-error";
 import { IRequestAuth, IResponseAuth } from "../../dto/auth-dto";
-import { IUserRepository } from "../../repository/interface/user-repository-interface";
+import { IUserRepository } from "../../repository/user-repository-interface";
 import { logger } from "../../../../shared/pino/pino-logger";
 import { TokenUtil } from "../../../../utils/token-util";
 
@@ -48,7 +48,7 @@ class AuthenticateUserUseCase {
                     id: user.id
                 }
             };
-
+            console.log(tokenReturn)
             return tokenReturn;
         } catch (error) {
             logger.error(error)

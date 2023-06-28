@@ -5,6 +5,7 @@ import { UserRepository } from "../../module/user/repository/user-repository";
 
 interface IPayload {
     sub: string;
+    email: string;
 }
 
 export async function ensureAuthenticated(request: Request, response: Response, next: NextFunction){
@@ -17,10 +18,9 @@ export async function ensureAuthenticated(request: Request, response: Response, 
 
     const [, token] = authHeader.split(" ");
     try {
-        
-        const {sub: user_id} = verify(token, secretKey) as IPayload;
+        const { sub: user_id, email } = verify(token, secretKey) as IPayload;
         const usersRepository = new UserRepository();
-        const user = usersRepository.findUserByEmail(user_id);
+        const user = await usersRepository.findUserByEmail(email);
 
         if(!user){
             throw new AppError("User does not exists", 401);

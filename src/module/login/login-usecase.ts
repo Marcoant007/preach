@@ -4,7 +4,7 @@ import { inject, injectable } from "tsyringe";
 import { AppError } from "../../shared/error/app-error";
 import { LoginDTO } from "../user/dto/login-dto";
 import { UserDTO } from "../user/dto/user-dto";
-import { IUserRepository } from "../user/repository/interface/user-repository-interface";
+import { IUserRepository } from "../user/repository/user-repository-interface";
 
 @injectable()
 class LoginUseCase {

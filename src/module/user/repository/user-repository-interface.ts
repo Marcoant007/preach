@@ -1,6 +1,6 @@
 import { User } from "@prisma/client";
-import { LoginDTO } from "../../dto/login-dto";
-import { UserDTO } from "../../dto/user-dto";
+import { LoginDTO } from "../dto/login-dto";
+import { UserDTO } from "../dto/user-dto";
 
 interface IUserRepository {
     findUserById(userId: number): Promise<User | null>;

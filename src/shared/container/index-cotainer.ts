@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import { IUserRepository } from '../../module/user/repository/interface/user-repository-interface';
+import { IUserRepository } from '../../module/user/repository/user-repository-interface';
 import { UserRepository } from '../../module/user/repository/user-repository';
 
 

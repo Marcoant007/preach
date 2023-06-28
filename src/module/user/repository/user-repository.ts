@@ -1,5 +1,5 @@
 import { User } from "@prisma/client";
-import { IUserRepository } from "./interface/user-repository-interface";
+import { IUserRepository } from "./user-repository-interface";
 import { prismaClient } from "../../../shared/database/migrations/prisma-client";
 import { UserDTO } from "../dto/user-dto";
 import { AppError } from "../../../shared/error/app-error";
@@ -39,6 +39,7 @@ class UserRepository implements IUserRepository {
     };
 
     async findUserByEmail(email: string): Promise<User | null> {
+        console.log(email);
         const user = await prismaClient.user.findUnique({
             where: {
                 email: email
