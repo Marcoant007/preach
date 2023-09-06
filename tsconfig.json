@@ -1,19 +1,27 @@
 {
-    "compilerOptions": {
-      "target": "ES2017",
-      "sourceMap": true,
-      "outDir": "dist/",
-      "lib": ["ESNext"],
-      "esModuleInterop": true,
-      "strict": true,
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "resolveJsonModule": true,
-      "module": "CommonJS",
-      "moduleResolution": "node",
-      "declaration": false
-    },
-    "include": ["src/**/*.ts"]
-  }
+  "compilerOptions": {
+    "target": "ES2017",
+    "sourceMap": true,
+    "outDir": "dist/",
+    "lib": [
+      "ESNext"
+    ],
+    "esModuleInterop": true,
+    "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "declaration": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}
